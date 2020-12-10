@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> 2020-12dez = p3</title>
+
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.css">
+</head>
+
+<body>
+    <div id="container">
+        <h1>P3 - Cadastro de Produtos</h1>
+        <div class="row">
+            <div class="col-md-12">
+
+                <form id="idFORM" method="POST" action="enviaImagem.php" enctype="multipart/form-data">
+                    <label class="form-group">ID
+                        <input id="aid" readonly></input>
+                    </label>
+                    <label class="form-group">PRODUTO
+                        <input id="aprodut"></input>
+                    </label>
+                    <label class="form-group">Descrição
+                        <input id="adescri"></input>
+                    </label>
+                    <label class="form-group">UNID
+                        <input id="aunidad"></input>
+                    </label>
+
+                    <label class="form-group">PR Custo
+                        <input id="avlcust"></input>
+                    </label>
+                    <label class="form-group">PR Venda
+                        <input id="avlvend"></input>
+                    </label>
+                    <label class="form-group">Estq MIN
+                        <input id="aqtmini"></input>
+                    </label>
+                    <label class="form-group">Estoque
+                        <input id="aqtesto"></input>
+                    </label>
+                    <label class="form-group">Imagem
+                        <input id="aimagem"  name="aimagem" type="file" accept='image/*'></input>
+                    </label>
+
+                    <p id="aacao" hidden>incluir</p>
+                    <button id="bGravar" type="submit" class="btn btn-primary">Gravar</button>
+                    <button id="bLimpar" type="button" class="btn btn-danger">Limpar</button>
+                    <button id="bCarregar" type="button" class="btn btn-primary">Carregar</button>
+                    <span id="loader" class="p-2 font-weight-bold text-danger float-right"></span>
+                </form>
+            </div>
+        </div>
+        <p id="p02"></p>
+        <div class="row">
+            <div class="md-col-12">
+                <table id="atabela" class="table table-hover">
+                    <thead>
+                        <tr class="table-active">
+                            <th scope="col">ID</th>
+                            <th scope="col">PROD</th>
+                            <th scope="col">Descricao</th>
+                            <th scope="col">UN</th>
+                            <th scope="col">PR Custo</th>
+                            <th scope="col">PR Venda</th>
+                            <th scope="col">ESTOQ</th>
+                            <th scope="col">Minimo</th>
+                            <th scope="col">IMG</th>
+                            <th scope="col">Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabela">
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <!--
+    <script src="javascript.js"></script>
+    !-->
+    <script>
+    
+    const URL_BASE = 'http://localhost/local/ws_p3/produtos/';
+    
+    const Excluir = (idProduto) => {
+        if (window.confirm('Deseja excluir o Produto ' + idProduto + ' ?')) {
+            //IniciaLoader();
+            fetch(URL_BASE + idProduto, {
+                    method: 'DELETE',
+                   headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                })
+                .then(response => {
+                    if (response.status == 200) {
+                        document.getElementById('linha' + idProduto).remove()
+                    }
+                    return response.json()
+                })
+                .then(json => {
+                    //alert(json.mensagem)
+                    //FinalizaLoader()
+                    CarregaDadosTable()
+                })
+        }
+    }
+
+    
+    const CarregaDadosTable = () => {
+    
+        fetch(URL_BASE, { cache: 'no-store' })
+        .then(response => response.json())
+        .then(produtos => {
+            var linha = '';
+            produtos.data.forEach(produtos => {
+                linha += '<tr id="linha' + produtos.controle + '">' +
+                    '<td>' + produtos.controle + '</td>' +
+                    '<td>' + produtos.nom_produto + '</td>' +
+                    '<td>' + produtos.descricao + '</td>' +
+                    '<td>' + produtos.unidade + '</td>' +
+                    '<td>' + produtos.vl_custo + '</td>' +
+                    '<td>' + produtos.vl_venda + '</td>' +
+                    '<td>' + produtos.qt_estoq + '</td>' +
+                    '<td>' + produtos.qt_minimo + '</td>' +
+                    '<td>' + produtos.imagem + '</td>' +
+                    '<td>' +
+                    '<a href="javascript:void(0)" id="btn-editar-' + produtos.controle + '" class="btn-primary">Editar <i class="fa fa-edit"></i></a>' +
+                    '<a href="javascript:void(0)" id="btn-excluir-' + produtos.controle + '" class="btn-danger">Excluir <i class="fa fa-danger"></i></a>' +
+                    '</td>' +
+                    '</tr>';
+            })
+            tabela.innerHTML = linha;
+            //
+            produtos.data.forEach(produtos => {
+            //    var bEditar = document.getElementById('btn-editar-' + produtos.controle);
+            //    bEditar.addEventListener('click', () => {
+            //        CarregarRegistro(produtos.controle);
+            //    })
+            var bExcluir = document.getElementById('btn-excluir-' + produtos.controle);
+                bExcluir.addEventListener('click', () => {
+                    Excluir(produtos.controle);
+                })
+            })
+            //FinalizaLoader();
+        })
+        
+    }
+    CarregaDadosTable();
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,69 @@
+#criando o banco de dados
+create database p3;
+
+#criando a tabela TabUsuario
+create table TabUsuario (controle int not null auto_increment primary key, apelido char(10) not null, usuario varchar(30) not null, senha varchar(255) not null, email varchar(60), dica varchar(50), permissao char(1), dt_registro date not null, situacao char(1));
+
+#criando a tabela TabProduto
+create table TabProduto (controle int not null auto_increment primary key, cod_produto varchar(10), nom_produto varchar(40) not null, descricao varchar(255), unidade char(4) not null, vl_custo numeric(8,2) not null, vl_venda numeric(8,2) not null, qt_minimo int not null default 0, qt_estoq int not null default 0, complemento varchar(255), imagem varchar(100), dt_registro date not null, situacao char(1));
+
+#criando a tabela TabCliente
+create table TabCliente (controle int not null auto_increment primary key, tipo_cliente char(1) not null, nome_cliente varchar(50) not null, cpf_cnpj char(20) not null, rg_ie char(18) not null, dt_nasc date not null, estado_civil char(1) not null, profissao varchar(20) not null, fone varchar(30) not null, email varchar(60) not null,end varchar(60), numero varchar(10), complemento varchar(60), bairro varchar(30), cidade varchar(30), uf char(2), cep char(9) not null, dt_ult_compra date, vl_ult_compra numeric(8,2), obs varchar(100), dt_registro date not null default now(), situacao char(1));
+
+#criando a tabela TabComentario
+create table TabComentario(controle int not null auto_increment primary key, anonimo char(1), apelido char(10) not null, comentario varchar(255) not null, data char(10) not null, hora char(8) not null, dt_registro date not null default now(), situacao char(1));
+
+#corrigindo a tabela TabComentario -adicionando cod_produto
+alter table TabComentario add cod_produto int not null, add constraint foreign key (cod_produto) references TabProduto(controle);
+
+#criando a tabela TabLog
+###servirá através de TRIGGER para registrar os logs das operações
+create table TabLog (controle int not null auto_increment primary key, tabela varchar(20) not null, operacao varchar(10) not null, apelido varchar(10), produto varchar(10), dt_registro date not null default now(), situacao char(1));
+
+
+
+####Criando TRIGGER para controle log
+##TRIGGER 1
+delimiter $
+create trigger log001 after insert 
+on TabProduto 
+    for each row 
+    begin 
+        insert into TabLog( tabela, operacao, produto) 
+                values ('PRODUTO','insert',new.controle);
+    end$ 
+delimiter;
+
+##TRIGGER 2
+delimiter $
+create trigger log002 after delete  
+on TabProduto      
+    for each row
+    begin
+        insert into TabLog( tabela, operacao, produto)
+            values ('PRODUTO','delete',old.controle);
+    end$;
+delimiter;
+
+##TRIGGER 3
+delimiter $
+create trigger log003 after insert 
+on TabComentario 
+    for each row 
+    begin 
+        insert into TabLog( tabela, operacao, produto) 
+                values ('COMENTARIO','insert',new.apelido);
+    end$ 
+delimiter;
+
+##TRIGGER 4
+delimiter $
+create trigger log004 after delete  
+on TabComentario      
+    for each row
+    begin
+        insert into TabLog( tabela, operacao, produto)
+            values ('COMENTARIO','delete',old.apelido);
+    end$;
+delimiter;
+

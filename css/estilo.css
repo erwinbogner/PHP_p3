@@ -1,0 +1,138 @@
+@charset "UTF-8";
+
+/* geral */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* menu */
+/* menu click*/
+.navbar-nav li:active>ul.dropdown-menu {
+    display: block;
+}
+
+/* submenu hover */
+.navbar-nav ul li:hover>ul.dropdown-menu {
+    display: block;
+}
+
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu>.dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -6px;
+}
+
+/* rotate caret on hover */
+.dropdown-menu>li>a:hover:after {
+    text-decoration: underline;
+    transform: rotate(-90deg);
+}
+
+
+
+/* ESTILO PARA O FOOTER FICAR NO FINAL DA PAGINA */
+/* conteudo */
+article {
+    min-height: 23rem;
+}
+
+/* footer */
+.footer {
+    bottom: 0;
+}
+
+.versao {
+    margin-top: 5rem;
+}
+
+
+/* footer color */
+.special-color {
+    background-color: #37474F;
+}
+
+.special-color-dark {
+    background-color: #263238;
+    color: #fff;
+}
+
+/* margem footer */
+.copy {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+
+/* TABELA */
+
+/* scroll personalizado da tabela */
+.scrollbar {
+    max-width: 85%;
+    scrollbar-color: #6c757d #F5F5F5;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+    background-color: #F5F5F5;
+    border-radius: 10px;
+}
+
+.scrollbar::-webkit-scrollbar {
+    width: 12px;
+    background-color: #F5F5F5;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #6c757d;
+}
+
+
+
+/* não mostrar cursor de texto */
+#tabela tr td {
+    cursor: pointer;
+}
+
+/*Cores*/
+
+/*Cor hover*/
+#tabela tr:hover td {
+    background-color: #feffb7;
+}
+
+/*Cor click*/
+#tabela tr.selecionado td {
+    background-color: #aff7ff;
+}
+
+.selecionado {
+    background-color: #aff7ff;
+}
+
+.recuoLabel {
+    margin-top: 0.5rem;
+    margin-bottom: -20px;
+    margin-left: 0.5rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 30vw;
+    height: 40vh;
+    margin: 10vh auto;
+    justify-content: space-around;
+}
+
+table, th, td {
+  border: 1px solid black;
+}
+
+th, td {
+  padding: 10px;
+}

@@ -1,0 +1,328 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    /*width: auto;*/
+    /*width: 1120px;*/
+}
+
+.imgLOGO {
+    height: 100px;
+    width: 130px;
+}
+
+.conteudo {
+    /*margin-left: 10px;*/
+    height: 520px;
+    /*background-color: aqua;*/
+}
+
+.conteudoRamais {
+    width: 1080px;
+    /*background-color: aqua;*/
+    height: auto;
+}
+
+.conteudoRamais2 {
+    margin-left: 10px;
+    width: auto;
+    /*background-color: aqua;*/
+    height: auto;
+}
+
+.h3Menu {
+    color: red;
+    background-color: blue;
+    text-align: center;
+    width: 100%;
+}
+
+.navMenu ul {
+    /*color: white;*/
+}
+
+.navMenu ul li {
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 20px;
+    font-size: 1.3em;
+    width: 150px;
+    height: 60px;
+    text-decoration: none;
+    /*border: 1px solid blue;*/
+    border-radius: 10px;
+    /*background-color: blue;*/
+    text-align: center;
+}
+
+.navMenu ul li a {
+    /*color: white;*/
+    text-align: center;
+    margin-top: 5px;
+    text-decoration: none;
+}
+
+.navMenu ul li a:hover {
+    background-color: black;
+    color: gray;
+}
+
+.footerGeral {
+    float: left;
+    display: block;
+    /*margin-left: 2px;*/
+    background-color: yellow;
+    height: auto;
+    /*width: 1320px;*/
+    /*margin-left: 5px;*/
+    width: 1270px;
+}
+
+.footerBotoes {
+    margin-left: 5px;
+    /*float: left;*/
+    width: auto;
+    /*background-color: aqua;*/
+}
+
+.b_voltar {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    float: left;
+    font-size: 1.1em;
+    width: 140px;
+    height: 40px;
+    text-decoration: none;
+    border: 1px solid blue;
+    border-radius: 10px;
+    background-color: red;
+    color: white;
+    text-align: center;
+}
+
+.b_voltar a {
+    color: white;
+}
+
+.b_add {
+    margin-left: 20px;
+    float: left;
+    font-size: 1.1em;
+    width: 140px;
+    height: 40px;
+    text-decoration: none;
+    border: 1px solid blue;
+    border-radius: 10px;
+    background-color: blue;
+    color: white;
+    text-align: center;
+}
+
+
+/*
+table,
+th,
+td {
+    border: 1px solid blue;
+    width: 500px;
+    height: auto;
+}
+*/
+
+#mGeral {
+    float: left;
+    margin-left: 20px;
+    border: 1px solid black;
+    width: 300px;
+    height: auto;
+    background-color: lightgreen;
+}
+
+#mFiscal {
+    float: left;
+    margin-left: 20px;
+    border: 1px solid black;
+    width: 300px;
+    height: auto;
+    background-color: lightgreen;
+}
+
+#mLogistica {
+    float: left;
+    margin-left: 20px;
+    border: 1px solid black;
+    width: 300px;
+    height: auto;
+    background-color: lightgreen;
+}
+
+#mFinanceiro {
+    float: left;
+    margin-left: 20px;
+    border: 1px solid black;
+    width: 300px;
+    height: auto;
+    background-color: lightgreen;
+}
+
+#mADM {
+    float: left;
+    margin-left: 20px;
+    border: 1px solid black;
+    width: 300px;
+    height: auto;
+    background-color: lightgreen;
+}
+
+#menu1 {
+    float: left;
+    margin-left: 20px;
+    border: 1px solid black;
+    width: 300px;
+    height: auto;
+    background-color: lightgreen;
+}
+
+.pCaixa {
+    background-color: black;
+    color: white;
+    width: 260px;
+    margin: auto;
+    padding: 5px;
+    margin-bottom: 5px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.pCaixa:hover {
+    color: black;
+    background-color: white;
+    text-decoration: none;
+}
+
+.b_ramais1 {
+    margin-left: 10px;
+    float: left;
+    border: 1px solid blue;
+    font-size: 0.8em;
+    font-family: sans-serif;
+    /*background-color: aquamarine;*/
+    width: auto;
+    height: auto;
+}
+
+.tb_001 {
+    /*padding: 0;
+     margin: 0;*/
+    font-size: 1em;
+}
+
+.b_ramais2 {
+    margin-left: 10px;
+    float: left;
+    border: 1px solid blue;
+    font-size: 0.8em;
+    font-family: sans-serif;
+    /*background-color: aquamarine;*/
+    width: auto;
+    height: auto;
+}
+
+.myTable3 thead {
+    color: green;
+}
+
+.myTable3 tbody {
+    color: blue;
+}
+
+.myTable3 tfoot {
+    color: red;
+}
+
+.myTable3 table,
+th,
+td {
+    border: 1px solid black;
+    font-size: 1.3em;
+    padding: 1px 4px 1px 1px;
+}
+
+.maior td {
+    font-size: 1.2em;
+    background-color: black;
+    color: white;
+}
+
+.Card01 {
+    float: left;
+    margin-top: 5px;
+    margin-right: 10px;
+    border: 1px solid blue;
+    border-radius: 10%;
+    background-color: yellow;
+    color: black;
+    width: auto;
+}
+
+.Card01:hover {
+    background-color: black;
+    color: green;
+}
+
+.pCard01 {
+    margin: 2px;
+    margin-left: 5px;
+    padding: 2px;
+    font-size: 0.9em;
+}
+
+.Card02 {
+    margin-left: 10px;
+    margin-bottom: 0px;
+    border: 1px solid black;
+    height: auto;
+    width: 480px;
+    padding: 5px;
+}
+
+#produtos {
+    float: left;
+}
+
+#comentarios {
+    float: left;
+    margin-top: 10px;
+    border: 2px solid black;
+    border-radius: 5%;
+}
+
+#Carrinho {
+    float: left;
+    margin-top: 10px;
+    border: 2px solid black;
+    border-radius: 5%;
+}
+
+.lojaIMG {
+    position: relative;
+    border: 1px solid #000;
+    overflow: hidden;
+    /*width: 400px;
+    margin: 100px;*/
+    width: auto;
+    margin: auto;
+}
+
+.lojaIMG img {
+    max-width: 100%;
+    -moz-transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+.lojaIMG:hover img {
+    -moz-transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+}
